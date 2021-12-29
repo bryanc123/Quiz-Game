@@ -42,6 +42,72 @@ let questions = [
         ],
         correctAnswer: "2",
         hint: "The change happened early on"
+    },
+    {
+        text: "Which of the following is a valid function declaration in JavaScript?",
+        options: [
+            "func() myFunction => {}",
+            "const myFunction() => {}",
+            "function() myFunction => {}",
+            "const myFunction = () => {}",
+        ],
+        correctAnswer: "const myFunction = () => {}",
+        hint: "In an arrow function, the parameters are placed just before the arrow"
+    },
+    {
+        text: "How is the background color of an element referred to in JavaScript?",
+        options: [
+            "bgColor",
+            "bg-color",
+            "backgroundColor",
+            "background-color"
+        ],
+        correctAnswer: "backgroundColor",
+        hint: "CSS properties are written in camel case in JavaScript",
+    },
+    {
+        text: "webpack's development server is called ____",
+        options: [
+            "webpack-dev-server",
+            "wp-server",
+            "wp-dev-server",
+            "webpack-server"
+        ],
+        correctAnswer: "webpack-dev-server",
+        hint: "webpack is not abbreviated in the name of the server"
+    },
+    {
+        text: "Which of the following is NOT a CSS preprocessor?",
+        options: [
+            "SASS",
+            "Stylus",
+            "LESS",
+            "Handlebars"
+        ],
+        correctAnswer: "Handlebars",
+        hint: "The name is not abbreviated"
+    },
+    {
+        text: "Which feature of React allows functional components to hold state?",
+        options: [
+            "Containers",
+            "Hooks",
+            "Jars",
+            "None of the above"
+        ],
+        correctAnswer: "Hooks",
+        hint: "This feature can hook into different lifecycle phases in components"
+    },
+    {
+        text: "Which HTML element is used to load an external stylesheet in an HTML file?",
+        options: [
+            "link",
+            "a",
+            "meta",
+            "script"
+        ],
+        correctAnswer: "link",
+        hint: "The &lt;script&gt; tag is typically used to embed JavaScript code"
     }
 ];
 let currentQuestion = 0;
