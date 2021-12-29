@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Web Development Quiz</title>
+</head>
+<body>
+    <section class="overlay">
+    </section>
+    <header>
+        Web Development Quiz
+    </header>
+    <section class="main">
+        <section class="splash-screen">
+            <h2>Quiz</h2>
+            <button onclick="initCountdown()">Start</button>
+            <button onclick="display('instructions')">Instructions</button>
+        </section>
+        <section class="quiz">
+            <div class="question-number"></div>
+            <div class="quiz__top-panel">
+                <div>
+                    <button class="lifeline" onclick="displayHint(this)">Hint</button>
+                    <button class="lifeline" onclick="fiftyFifty(this)">50/50</button>
+                </div>
+                <div>
+                    <span class="question-timer"></span>
+                </div>
+            </div>
+            <div class="hint"></div>
+            <div class="question">
+
+            </div>
+            <div class="options">
+    
+            </div>
+        </section>
+        <section class="instructions">
+            <h2>Instructions</h2>
+            <p>Within the given time limit, choose the right answer for each question</p>
+            <p>You have two lifelines:</p>
+            <ul>
+                <li>50/50 - Remove half of the choices for a question</li>
+                <li>Hint - Receive a clue to the answer for a queston</li>
+            </ul>
+            <p>Each lifeline can be used only once per game</p>
+            <button onclick="display('splash-screen')">Back to Home</button>
+        </section>
+        <section class="game-over">
+            <h2 class="game-over__heading"></h2>
+            <div class="game-over__body">
+
+            </div>
+        </section>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+              <h3 class="footer-section-heading">Links</h3>
+              <ul>
+                <li><a href="https://github.com/bryanc123/Employee-Records-Angular">Source Code</a></li>
+                <li><a href="https://bryanc123.github.io/Personal-Website/">Personal Portfolio</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h3 class="footer-section-heading">Other Projects</h3>
+              <ul>
+                <li><a href="https://bryanc123.github.io/Employee-Records-Angular/">Employee Records</a></li>
+                <li><a href="https://bryanc123.github.io/Mobile-First-Design/">Mobile First Website</a></li>
+                <li><a href="https://bryanc123.github.io/Plain-JavaScript-Quiz/">Quiz App</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h3 class="footer-section-heading">Contact</h3>
+              <ul>
+                <li><strong>Phone Number</strong>: 1-805-608-0066</li>
+                <li><strong>Email</strong>: cayanan.bryanau@gmail.com</li>
+              </ul>
+            </div>
+          </div>
+    </footer>
+    </section>
+
+    <script src="./quiz.js"></script>
+</body>
+</html>
