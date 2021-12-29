@@ -99,9 +99,13 @@ const setQuestionTimer = () => {
 
 // initialize game
 const init = () => {
-    setQuestion();
-    display("quiz");
-    setQuestionTimer();
+    if(currentQuestion !== questions.length) {
+        setQuestion();
+        display("quiz");
+        setQuestionTimer();
+    } else {
+        display("game-over");
+    }
 }
 
 // display functions
@@ -118,7 +122,7 @@ const displayOverlay = (text, bgColor) => {
             clearInterval(timer);
             _overlay.style.display = "none";
 
-            if(currentQuestion < questions.length - 1) {
+            if(currentQuestion <= questions.length - 1) {
                 init();
             }
         }
@@ -169,6 +173,8 @@ const initCountdown = () => {
 }
 
 const checkAnswer = answer => {
+    clearInterval(questionTimerId);
+
     if(questions[currentQuestion].options[answer] === questions[currentQuestion].correctAnswer) {
         displayOverlay(["Correct!"], "green")
     } else {
@@ -177,7 +183,6 @@ const checkAnswer = answer => {
         displayOverlay(["Incorrect!", `The correct answer is ${correctAnswer}`], "red");
     }
 
-    clearInterval(questionTimerId);
     if(document.querySelector(".hint").style.display === "block") {
         hideHint();
     }
@@ -191,8 +196,7 @@ const checkAnswer = answer => {
         document.querySelector(".game-over__body").style.textAlign = "center";
 
         display("game-over");
-    } else {
-        currentQuestion++;
-        setQuestion();
     }
+
+    currentQuestion++;
 }
