@@ -188,7 +188,17 @@ const displayOverlay = (text, bgColor) => {
             clearInterval(timer);
             _overlay.style.display = "none";
 
-            if(currentQuestion <= questions.length - 1) {
+            console.log(numberOfIncorrectAnswers);
+            if(numberOfIncorrectAnswers === 3) {
+                document.querySelector(".game-over__heading").innerHTML = "Game Over";
+        
+                let gameOverBody = `<p>Unfortunately, ou have made 3 mistakes so the game is over</p>`;
+                gameOverBody += `<button onclick="display('splash-screen')">Back to Home</button>`;
+                document.querySelector(".game-over__body").innerHTML = gameOverBody;
+                document.querySelector(".game-over__body").style.textAlign = "center";
+        
+                display("game-over");
+            } else if(currentQuestion <= questions.length - 1) {
                 init();
             }
         }
