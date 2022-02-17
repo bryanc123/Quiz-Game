@@ -51,12 +51,10 @@ header {
 .splash-screen {
     align-self: center;
     display: flex;
-    flex-direction: column;
-    font-size: 3rem;
-    justify-content: space-between;
     text-align: center;
 }
 .splash-screen h2 {
+    font-size: 2rem;
     margin-bottom: 40px;
 }
 .splash-screen button {
@@ -66,6 +64,7 @@ header {
     display: block;
     font-size: 1rem;
     margin-bottom: 20px;
+    max-width: 200px;
     padding: 10px 20px;
     text-align: center;
     width: 100%;
@@ -73,6 +72,12 @@ header {
 .splash-screen button:hover {
     background-color: #0F56BA;
     cursor: pointer;
+}
+
+.splash-screen__container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Quiz */
@@ -96,6 +101,67 @@ header {
     margin-bottom: 20px;
 }
 
+/* Lifelines */
+
+.lifelines-modal {
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.lifelines-modal__content {
+    align-items: center;
+    background-color: #0047AB;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: column;
+    margin: 15% auto;
+    padding: 20px;
+    text-align: center;
+    width: 60%;
+}
+.lifelines-modal__content h2 {
+    margin-bottom: 40px;
+}
+
+.lifelines-modal__open {
+    background-color: #0047AB;
+    border: 1px solid white;
+    color: white;
+    display: inline-block;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    min-width: 150px;
+    padding: 10px;
+    text-align: center;
+}
+.lifelines-modal__open:hover {
+    background-color: #0F56BA;
+    cursor: pointer;
+}
+
+.lifelines-modal__close {
+    background-color: #D3D3D3;
+    border: 1px solid white;
+    color: black;
+    display: inline-block;
+    font-size: 1rem;
+    margin: 20px 0;
+    min-width: 150px;
+    padding: 10px;
+    text-align: center;
+}
+.lifelines-modal__close:hover {
+    background-color: #F0F0F0;
+    cursor: pointer;
+}
+
 .lifeline {
     background-color: #0047AB;
     border: 1px solid white;
@@ -103,6 +169,7 @@ header {
     display: inline-block;
     font-size: 1rem;
     margin-bottom: 20px;
+    min-width: 150px;
     padding: 10px;
     text-align: center;
 }

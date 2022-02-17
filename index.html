@@ -15,27 +15,35 @@
     </header>
     <section class="main">
         <section class="splash-screen">
-            <h2>Quiz</h2>
+          <div class="splash-screen__container">
+            <h2>Test Your Web Dev Knowledge</h2>
             <button onclick="initCountdown()">Start</button>
             <button onclick="display('instructions')">Instructions</button>
+          </div>
         </section>
         <section class="quiz">
             <div class="question-number"></div>
             <div class="quiz__top-panel">
                 <div>
-                    <button class="lifeline" onclick="displayHint(this)">Hint</button>
-                    <button class="lifeline" onclick="fiftyFifty(this)">50/50</button>
+                  <button class="lifelines-modal__open" onclick="displayLifelinesModal()">Lifelines</button>
+                  <span class="lifelines__no-more-message">No more lifelines</span>
                 </div>
                 <div>
                     <span class="question-timer"></span>
                 </div>
             </div>
             <div class="hint"></div>
-            <div class="question">
-
-            </div>
-            <div class="options">
-    
+            <div class="question"></div>
+            <div class="options"></div>
+            <div class="lifelines-modal">
+              <div class="lifelines-modal__content">
+                <div>
+                  <h2>Choose a Lifeline</h2>
+                </div>
+                <button class="lifeline" onclick="displayHint(this)">Hint</button>
+                <button class="lifeline" onclick="fiftyFifty(this)">50/50</button>
+                <button class="lifelines-modal__close">Go Back</button>
+              </div>
             </div>
         </section>
         <section class="instructions">
@@ -43,6 +51,7 @@
             <p>This quiz is composed of 10 questions</p>
             <p>Choose the right answer for each question within the given time limit</p>
             <p>If you make 3 mistakes, then the game is over</p>
+            <p>Running out of time on a question counts as a mistake</p>
             <p>You have two lifelines available for help:</p>
             <ul>
                 <li>50/50 - Remove half of the choices for a question</li>

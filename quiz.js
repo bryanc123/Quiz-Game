@@ -156,8 +156,16 @@ const setQuestionTimer = () => {
     
         if(questionCountdown === 0) {
             clearInterval(questionTimerId);
-            displayOverlay(["Time's Up!"], "red");
+
+            numberOfIncorrectAnswers++;
+            let correctAnswer = questions[currentQuestion].correctAnswer;
+            displayOverlay(["Time's Up!", `The correct answer is ${correctAnswer}`], "red");
+
             currentQuestion++;
+            if(lifelinesModal.style.display === "block") {
+                lifelinesModal.style.display = "none";
+            }
+            hideHint();
             setQuestion();
         }
     }, 1000);
@@ -192,7 +200,7 @@ const displayOverlay = (text, bgColor) => {
             if(numberOfIncorrectAnswers === 3) {
                 document.querySelector(".game-over__heading").innerHTML = "Game Over";
         
-                let gameOverBody = `<p>Unfortunately, ou have made 3 mistakes so the game is over</p>`;
+                let gameOverBody = `<p>Unfortunately, you have made 3 mistakes so the game is over</p>`;
                 gameOverBody += `<button onclick="display('splash-screen')">Back to Home</button>`;
                 document.querySelector(".game-over__body").innerHTML = gameOverBody;
                 document.querySelector(".game-over__body").style.textAlign = "center";
@@ -205,6 +213,23 @@ const displayOverlay = (text, bgColor) => {
     }, 500);
 }
 
+// display lifelines modal
+const lifelinesModal = document.querySelector(".lifelines-modal");
+const lifelinesModalOpen = document.querySelector(".lifelines-modal__open");
+const lifelinesModalClose = document.querySelector(".lifelines-modal__close");
+
+lifelinesModalOpen.onclick = () => {
+    lifelinesModal.style.display = "block";
+};
+lifelinesModalClose.onclick = () => {
+    lifelinesModal.style.display = "none";
+};
+window.onclick = event => {
+    if(event.target == lifelinesModal) {
+        lifelinesModal.style.display = "none";
+    }
+}
+
 // hint lifeline
 const displayHint = button => {
     button.style.display = "none";
@@ -212,6 +237,10 @@ const displayHint = button => {
 
     _hint.innerHTML = `<strong>Hint</strong>: ${questions[currentQuestion].hint}`;
     _hint.style.display = "block";
+
+    lifelinesModal.style.display = "none";
+
+    checkLifelines();
 }
 
 const hideHint = () => {
@@ -230,16 +259,41 @@ const fiftyFifty = button => {
             options[i].style.display = "none";
             removeCount++;
             if(removeCount === 2) {
+                lifelinesModal.style.display = "none";
+                checkLifelines();
                 return;
             }
         }
     }
 }
 
+const checkLifelines = () => {
+    const lifelines = document.getElementsByClassName("lifeline");
+    const lifelinesCount = document.getElementsByClassName("lifeline").length;
+    let displayedLifelinesCount = 0;
+
+    for(let i = 0; i < lifelinesCount; i++) {
+        if(lifelines[i].style.display === "block") {
+            displayedLifelinesCount++;
+        }
+    }
+
+    if(displayedLifelinesCount === 0) {
+        lifelinesModalOpen.style.display = "none";
+        let lifelinesNoMoreMessage = document.querySelector(".lifelines__no-more-message");
+        lifelinesNoMoreMessage.style.display = "block";
+    }
+};
+
 const initCountdown = () => {
+    lifelinesModalOpen.style.display = "block";
+    let lifelinesModalOpenContainer = document.querySelector(".lifelines-modal__open-container");
+    let lifelinesNoMoreMessage = document.querySelector(".lifelines__no-more-message");
+    lifelinesNoMoreMessage.style.display = "none";
+
     let lifelines = document.getElementsByClassName("lifeline");
     for(let i = 0; i < lifelines.length; i++) {
-        lifelines[i].style.display = "inline-block";
+        lifelines[i].style.display = "block";
     }
 
     currentQuestion = 0;
