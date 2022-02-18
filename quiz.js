@@ -162,7 +162,7 @@ const setQuestionTimer = () => {
             displayOverlay(["Time's Up!", `The correct answer is ${correctAnswer}`], "red");
 
             currentQuestion++;
-            if(lifelinesModal.style.display === "block") {
+            if(lifelinesModal.style.display === "flex") {
                 lifelinesModal.style.display = "none";
             }
             hideHint();
@@ -219,7 +219,7 @@ const lifelinesModalOpen = document.querySelector(".lifelines-modal__open");
 const lifelinesModalClose = document.querySelector(".lifelines-modal__close");
 
 lifelinesModalOpen.onclick = () => {
-    lifelinesModal.style.display = "block";
+    lifelinesModal.style.display = "flex";
 };
 lifelinesModalClose.onclick = () => {
     lifelinesModal.style.display = "none";
